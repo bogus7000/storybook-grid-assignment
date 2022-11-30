@@ -7,11 +7,6 @@ import { Card } from "../Card/Card";
 export default {
   title: "Components/Grid",
   component: Grid,
-  argTypes: {
-    transparent: {
-      control: { type: "boolean" },
-    },
-  },
   parameters: {
     layout: "fullscreen",
     viewport: {
@@ -20,7 +15,7 @@ export default {
   },
 };
 
-const ResponsiveTemplate = (args) => (
+const ResponsiveCardsTemplate = (args) => (
   <Grid>
     <GridRow>
       <GridCell>
@@ -64,7 +59,42 @@ const ResponsiveTemplate = (args) => (
   </Grid>
 );
 
-export const ResponsiveCards = ResponsiveTemplate.bind({});
+export const ResponsiveCards = ResponsiveCardsTemplate.bind({});
+ResponsiveCards.argTypes = {
+  transparent: {
+    control: { type: "boolean" },
+  },
+};
 ResponsiveCards.args = {
   transparent: false,
 };
+
+const ResponsiveImagesTemplate = () => (
+  <Grid>
+    <GridRow>
+      <GridCell>
+        <img
+          src="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
+          alt="16:9"
+        />
+      </GridCell>
+      <GridCell>
+        <img
+          src="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
+          alt="16:9"
+        />
+      </GridCell>
+    </GridRow>
+    <GridRow>
+      <GridCell>
+        <img
+          src="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
+          alt="16:9"
+        />
+      </GridCell>
+    </GridRow>
+  </Grid>
+);
+
+export const ResponsiveImages = ResponsiveImagesTemplate.bind({});
+ResponsiveImages.argTypes = {};

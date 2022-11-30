@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+<h2 align="center">
+Grid + Card Assignment
+</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+Hey there, how are you today? I've prepared some notes for you. Please don't skip :)
+</p>
 
-## Available Scripts
+<p align="center">
+	<img width="70%" height="auto" src="./images/preview.png">
+</p>
 
-In the project directory, you can run:
+### Table of Contents
 
-### `npm start`
+- [Table of Contents](#table-of-contents)
+- [Requirements](#requirements)
+- [How to run this project?](#how-to-run-this-project)
+- [Implementation notes](#implementation-notes)
+- [Feedback](#feedback)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Please read the [Feedback](#feedback) for details on the requirements. Assignment completed under the following requirements:
 
-### `npm test`
+- Mandatory `Grid` component
+- `Grid` component controls arbitrary elements and is responsive
+- Optional `Card` component
+- `Storybook` version `(6.5.*)`
+- Vanilla `CSS`. No external `CSS` frameworks like `Bootstrap` and `Tailwind`
+- Vanilla `React`
+- Make it happen: simple and ASAP
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to run this project?
 
-### `npm run build`
+- Clone
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  ```
+  # with SSH
+  git clone git@github.com:bogus7000/storybook-grid-assignment.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  # with HTTPS
+  git clone https://github.com/bogus7000/storybook-grid-assignment.git
+  ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Install dependencies
 
-### `npm run eject`
+  ```
+  npm install
+  ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Run `Storybook`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ```
+  npm run storybook
+  ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Inspect components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ```
+  Local: http://localhost:6006/
+  Network/WSL: http://172.18.8.78:6006/
+  ```
 
-## Learn More
+### Implementation notes
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- All component respect the following breakpoints. This is reflected in the `Storybook` viewport config as well:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  ```
+  XSM: 360+
+  SM: 600+
+  MD: 800+
+  LG: 1024+
+  XLG: 1288+
+  ```
 
-### Code Splitting
+- `Grid`, `GridRow` and `GridCell` components can be used to lay the grid out, for example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  ```
+  <Grid>
+  <GridRow>
+  	<GridCell>
+  		<Card />
+  	</GridCell>
+  	<GridCell>
+  		<Card />
+  	</GridCell>
+  	<GridCell hideBelow="sm">
+  		<Card />
+  	</GridCell>
+  	<GridCell hideBelow="lg">
+  		<Card />
+  	</GridCell>
+  </GridRow>
+  </Grid>
+  ```
 
-### Analyzing the Bundle Size
+- Implemented with `flexbox` and `column-gap` property + `media queries`. Simple and ASAP
+- `Grid` is a mandatory component. It encapsulates the grid container styles, adjusts the grid based on the `breakpoint`, and expects `GridRow` components to be passed down as children
+- `GridRow` is a mandatory component. It encapsulates the grid row styles, auto-adjusts to the number of children and expects some components to be passed down as children. It provides the optional `hideBelow` prop. Use it like: `hideBelow="sm"` to hide the whole row below a certain `breakpoint`
+- `GridCell` is an optional component. It provides the optional `hideBelow` prop. Use it like: `hideBelow="sm"` to hide single grid elements below a certain `breakpoint`
+- Among other props, `Card` component provides `transparent` prop to control the background modifier (with and without the background)
+- `Card` component supports responsive typography and spacing (with `CSS variables`)
+- I've applied `reset` + `normalize` technique to make my life a bit easier
+- Props are wired up. You can play around with them in the `Controls` view inside `Storybook`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Feedback
 
-### Making a Progressive Web App
+- In the future, please consider including more details about how styles are expected to be managed. `CSS-in-JS`? Pre-processors like `SASS` perhaps? In the end, I went for simple `Vanilla CSS` with `flexbox` and `media queries`, as I was severely limited in terms of time I could devote to this assignment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `Grid` component spec may be interpreted in several different ways. At first, I thought that this grid is specifically targeted at images, since you've specified pixel density for some of the grid items `(599x315 @2x)`. Later, as I was inspecting the `Card` component spec, I noticed that the same grid is used to align cards. To be honest, I am still not 100% sure what is expected here. Regardless, my grid supports both cases. There's the `ResponsiveImages` story for images, and the `ResponsiveCards` story for cards
 
-### Advanced Configuration
+- Moreover, I'm not sure about the grid container element, and how the space around the grid should be handled. At `@360+`, should the grid container pin the grid to exactly `360px` width, with white space outside the grid expanding towards the left and right edges of the viewport, as the viewport width increases (sort of like the popular `margin: auto` technique)? In the end, I decided that the grid will stretch out to fill the width of the viewport, as I believe this to be more desired UX-wise. Sorry if I got it wrong here :)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- The `Card` component spec IMO is too general to demand pixel-perfect implementation :). Please consider sharing Figma design files, or similar, for future assignments :)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Humongous THANKS for your time, I've enjoyed this one a lot! Cheers!
