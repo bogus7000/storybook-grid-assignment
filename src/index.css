@@ -1,13 +1,62 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Reset + normalize */
+@import "./reset.css";
+@import "./normalize.css";
+
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+
+/* Typography */
+html {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* 
+  Responsive breakpoints: 
+  XSM: 360+
+  SM: 600+
+  MD: 800+
+  LG: 1024+
+  XLG: 1288+
+*/
+
+/* XSM */
+@media screen and (max-width: 599px) {
+  html {
+    font-size: 10px;
+  }
+}
+
+/* SM */
+@media screen and (max-width: 799px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* MD */
+@media screen and (max-width: 1023px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* LG */
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+:root {
+  /* Typography */
+  --t-lh-box: 1;
+  --t-lh-default: 1.4;
+  --t-fw-bold: 600;
+  --t-fw-regular: 400;
+  /* Colors */
+  --c-text-primary: #004152;
+  --c-accent-primary: #11a28c;
+  --c-bg-white: #ffffff;
+  --c-bg-transparent: rgba(255, 255, 255, 0);
 }

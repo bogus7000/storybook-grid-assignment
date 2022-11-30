@@ -1,0 +1,105 @@
+:root {
+  --card-pad: 1rem;
+  --card-pad-xs: 0.25rem;
+  --card-fs-title: 1.25rem;
+  --card-fs-copy: 0.75rem;
+  --card-fs-description: 0.75rem;
+  --card-fs-currency: 1.5rem;
+}
+
+/* Block */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--c-bg-white);
+  color: var(--c-text-primary);
+  font-weight: var(--t-fw-regular);
+}
+
+/* Elements */
+img.card__image {
+  max-width: 100%;
+  height: auto;
+}
+
+.card__content {
+  padding: 0 var(--card-pad);
+}
+
+.card__content .title {
+  font-size: var(--card-fs-title);
+  line-height: var(--t-lh-default);
+  font-weight: var(--t-fw-bold);
+  padding: var(--card-pad) 0;
+}
+
+.card__content .copy {
+  font-size: var(--card-fs-copy);
+  line-height: var(--t-lh-default);
+  padding-bottom: var(--card-pad);
+}
+
+.card__price-description {
+  line-height: var(--t-lh-default);
+  padding: 0 var(--card-pad);
+}
+
+.card__price-description .description {
+  line-height: var(--t-lh-default);
+  font-size: var(--card-fs-description);
+  padding-bottom: var(--card-pad-xs);
+}
+
+.card__price {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  line-height: var(--t-lh-default);
+  padding: 0 var(--card-pad);
+}
+
+.card__price .price {
+  line-height: var(--t-lh-box);
+  font-size: var(--card-fs-currency);
+  padding-bottom: var(--card-pad);
+  padding-right: var(--card-pad-xs);
+  font-weight: var(--t-fw-bold);
+}
+
+.card__price .currency {
+  line-height: var(--t-lh-box);
+  font-weight: var(--t-fw-bold);
+}
+
+.card__actions {
+  padding: 0 var(--card-pad);
+  display: flex;
+  flex-direction: column;
+}
+
+.card__actions .action-link {
+  color: var(--c-accent-primary);
+  padding-bottom: var(--card-pad);
+  font-weight: var(--t-fw-bold);
+}
+
+/* Modifiers */
+.card--transparent {
+  background-color: var(--c-bg-transparent);
+}
+
+.card--transparent .card__content {
+  padding: 0;
+}
+
+.card--transparent .card__price-description {
+  padding: 0;
+}
+
+.card--transparent .card__price {
+  padding: 0;
+}
+
+.card--transparent .card__actions {
+  padding: 0;
+}
