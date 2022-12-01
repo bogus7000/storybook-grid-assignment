@@ -3,11 +3,11 @@ Grid + Card Assignment
 </h2>
 
 <p align="center">
-Hey there, how are you today? I've prepared some notes for you. Please don't skip :)
+Hey there, how are you today? 
 </p>
 
 <p align="center">
-	<img width="70%" height="auto" src="./images/preview.png">
+	<img width="90%" height="auto" src="./images/preview.png">
 </p>
 
 ### Table of Contents
@@ -20,10 +20,10 @@ Hey there, how are you today? I've prepared some notes for you. Please don't ski
 
 ### Requirements
 
-Please read the [Feedback](#feedback) for details on the requirements. Assignment completed under the following requirements:
+Please read the [Feedback](#feedback) section for details on how I settled on these. Here's my list:
 
 - Mandatory `Grid` component
-- `Grid` component controls arbitrary elements and is responsive
+- `Grid` component controls arbitrary elements, is responsive
 - Optional `Card` component
 - `Storybook` version `(6.5.*)`
 - Vanilla `CSS`. No external `CSS` frameworks like `Bootstrap` and `Tailwind`
@@ -105,7 +105,7 @@ Please read the [Feedback](#feedback) for details on the requirements. Assignmen
 
 ### Feedback
 
-- In the future, please consider including more details about how styles are expected to be managed. `CSS-in-JS`? Pre-processors like `SASS` perhaps? In the end, I went for simple `Vanilla CSS` with `flexbox` and `media queries`, as I was severely limited in terms of time I could devote to this assignment
+- In the future, please consider including more details about how styles are expected to be managed. `CSS-in-JS`? Pre-processors like `SASS` perhaps? In the end, I decided to use `Vanilla CSS` with `flexbox` and `media queries`, as it seemed like that's what was required for this assignment. Plus I needed to get this done ASAP, and this seemed like a good-enough option that would let me kick this off immediately :)
 
 - `Grid` component spec may be interpreted in several different ways. At first, I thought that this grid is specifically targeted at images, since you've specified pixel density for some of the grid items `(599x315 @2x)`. Later, as I was inspecting the `Card` component spec, I noticed that the same grid is used to align cards. To be honest, I am still not 100% sure what is expected here. Regardless, my grid supports both cases. There's the `ResponsiveImages` story for images, and the `ResponsiveCards` story for cards
 
