@@ -98,3 +98,29 @@ const ResponsiveImagesTemplate = () => (
 
 export const ResponsiveImages = ResponsiveImagesTemplate.bind({});
 ResponsiveImages.argTypes = {};
+
+const PlaygroundTemplate = (args) => (
+  <Grid>
+    <GridRow>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+      <Card></Card>
+    </GridRow>
+
+    <GridRow>
+      <GridCell>
+        <Card></Card>
+      </GridCell>
+      <GridCell>
+        <Card></Card>
+      </GridCell>
+    </GridRow>
+
+    <GridRow>
+      <Card></Card>
+    </GridRow>
+  </Grid>
+);
+
+export const Playground = PlaygroundTemplate.bind({});

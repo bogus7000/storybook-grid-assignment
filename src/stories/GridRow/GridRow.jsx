@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./grid-row.css";
+import "./grid-row.scss";
 
 export const GridRow = ({ hideBelow, children }) => {
   return hideBelow ? (

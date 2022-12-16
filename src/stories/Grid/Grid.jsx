@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./grid.css";
+import "./grid.scss";
 
 export const Grid = ({ children }) => {
   return <div className="grid-container">{children}</div>;

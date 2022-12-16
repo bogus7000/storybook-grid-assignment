@@ -1,4 +1,4 @@
-import "../src/index.css";
+import "../src/index.scss";
 
 const customViewportOptions = {
   XSM: {
