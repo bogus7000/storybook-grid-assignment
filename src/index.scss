@@ -1,62 +1,12 @@
-/* Reset + normalize */
-@import "./reset.css";
-@import "./normalize.css";
+@use './styles/config' as *;
 
-/* Font */
+// Reset + normalize
+@use "./styles/global/normalize.css";
+@use "./styles/global/reset.css";
+
+// Font
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@include set-font-family();
 
-/* Typography */
-html {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-}
-
-/* 
-  Responsive breakpoints: 
-  XSM: 360+
-  SM: 600+
-  MD: 800+
-  LG: 1024+
-  XLG: 1288+
-*/
-
-/* XSM */
-@media screen and (max-width: 599px) {
-  html {
-    font-size: 10px;
-  }
-}
-
-/* SM */
-@media screen and (max-width: 799px) {
-  html {
-    font-size: 12px;
-  }
-}
-
-/* MD */
-@media screen and (max-width: 1023px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-/* LG */
-@media screen and (min-width: 1024px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-:root {
-  /* Typography */
-  --t-lh-box: 1;
-  --t-lh-default: 1.4;
-  --t-fw-bold: 600;
-  --t-fw-regular: 400;
-  /* Colors */
-  --c-text-primary: #004152;
-  --c-accent-primary: #11a28c;
-  --c-bg-white: #ffffff;
-  --c-bg-transparent: rgba(255, 255, 255, 0);
-}
+// Apply responsive typography
+@include responsive-typography();

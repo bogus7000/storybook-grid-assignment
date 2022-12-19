@@ -1,0 +1,127 @@
+@use "sass:map";
+@use "sass:math";
+@use "config" as *;
+@use "../mixins" as *;
+
+// Initial container
+@mixin init-container {
+  // For the tiniest of screens
+  .grid--container {
+    width: 100%;
+  }
+}
+
+// Initial row
+@mixin init-row {
+  .grid--row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+// Initial column
+@mixin init-col {
+  // For the tiniest of screens
+  .grid--col {
+    flex: 0 0 100%;
+  }
+}
+
+// Override initial container styles for breakpoint
+@mixin make-container(
+  $grid-container-width,
+  $grid-half-gutter,
+  $grid-half-margin
+) {
+  .grid--container {
+    max-width: $grid-container-width;
+    margin: auto;
+    padding: $grid-half-gutter $grid-half-margin;
+  }
+}
+
+// Override initial container styles for columns
+@mixin make-cols(
+  $grid-breakpoint-name,
+  $grid-min-column-span,
+  $grid-columns,
+  $grid-column-width,
+  $grid-gutter,
+  $grid-half-gutter
+) {
+  .grid--col {
+    // Set default flex to 1 0 ...% for auto layout, based on $grid-min-column-span
+    flex: 1 0 math.percentage(math.div($grid-min-column-span, $grid-columns));
+    padding: $grid-half-gutter;
+
+    @for $span from 0 through $grid-columns {
+      @if $span == 0 {
+        // Hide on breakpoint with col-breakpoint-0
+        &.col-#{$grid-breakpoint-name}-#{$span} {
+          display: none;
+        }
+      } @else if $span >= $grid-min-column-span {
+        // Calculate values for responsive grid class
+        &.col-#{$grid-breakpoint-name}-#{$span} {
+          $col-width-px: calc(
+            ($span * $grid-column-width) + ($span * $grid-gutter)
+          );
+          $total-col-width-px: calc(
+            ($grid-columns * $grid-column-width) +
+              ($grid-columns * $grid-gutter)
+          );
+          display: block;
+          flex: 0
+            0
+            math.percentage(math.div($col-width-px, $total-col-width-px));
+        }
+      }
+    }
+  }
+}
+
+@mixin responsive-grid($grid-config: $grid-breakpoints) {
+  // Initialize
+  @include init-container();
+  @include init-row();
+  @include init-col();
+
+  // Apply overrides per breakpoint
+  @each $grid-breakpoint-name in map-keys($grid-config) {
+    // Collect config values
+    $grid-breakpoint-config: map.get($grid-config, $grid-breakpoint-name);
+    $grid-columns: map.get($grid-breakpoint-config, grid-columns);
+    $grid-min-column-span: map.get(
+      $grid-breakpoint-config,
+      grid-min-column-span
+    );
+    $grid-column-width: map.get($grid-breakpoint-config, grid-column-width);
+    $grid-container-width: map.get(
+      $grid-breakpoint-config,
+      grid-container-width
+    );
+    $grid-gutter: map.get($grid-breakpoint-config, grid-gutter);
+    $grid-half-gutter: calc($grid-gutter * 0.5);
+    $grid-half-margin: calc(
+      map.get($grid-breakpoint-config, grid-margin) * 0.5
+    );
+
+    // Apply
+    @include breakpoint-above($grid-container-width) {
+      @include make-container(
+        $grid-container-width,
+        $grid-half-gutter,
+        $grid-half-margin
+      );
+      @include make-cols(
+        $grid-breakpoint-name,
+        $grid-min-column-span,
+        $grid-columns,
+        $grid-column-width,
+        $grid-gutter,
+        $grid-half-gutter
+      );
+    }
+  }
+}

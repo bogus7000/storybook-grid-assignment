@@ -1,7 +1,5 @@
 import React from "react";
 import { Grid } from "./Grid";
-import { GridRow } from "../GridRow/GridRow";
-import { GridCell } from "../GridCell/GridCell";
 import { Card } from "../Card/Card";
 
 export default {
@@ -15,112 +13,47 @@ export default {
   },
 };
 
-const ResponsiveCardsTemplate = (args) => (
+const ControlledLayoutTemplate = () => (
   <Grid>
-    <GridRow>
-      <GridCell>
-        <Card transparent={args.transparent}></Card>
-      </GridCell>
-      <GridCell>
-        <Card transparent={args.transparent}></Card>
-      </GridCell>
-      <GridCell hideBelow={"sm"}>
-        <Card transparent={args.transparent}></Card>
-      </GridCell>
-      <GridCell hideBelow={"lg"}>
-        <Card transparent={args.transparent}></Card>
-      </GridCell>
-    </GridRow>
-
-    <GridRow>
-      <GridCell>
+    <div className="grid--row">
+      <div className="grid--col col-xsm-4 col-sm-6 col-md-3 col-lg-6 col-xlg-6">
         <Card></Card>
-      </GridCell>
-      <GridCell hideBelow={"sm"}>
+      </div>
+      <div className="grid--col col-xsm-4 col-sm-6 col-md-3 col-lg-6 col-xlg-6">
         <Card></Card>
-      </GridCell>
-      <GridCell hideBelow={"lg"}>
+      </div>
+      <div className="grid--col col-xsm-4 col-sm-6 col-md-2 col-lg-4 col-xlg-4">
         <Card></Card>
-      </GridCell>
-    </GridRow>
-
-    <GridRow>
-      <GridCell hideBelow={"sm"}>
-        <Card></Card>
-      </GridCell>
-      <GridCell hideBelow={"lg"}>
-        <Card></Card>
-      </GridCell>
-    </GridRow>
-
-    <GridRow hideBelow={"lg"}>
-      <Card></Card>
-    </GridRow>
+      </div>
+    </div>
   </Grid>
 );
 
-export const ResponsiveCards = ResponsiveCardsTemplate.bind({});
-ResponsiveCards.argTypes = {
-  transparent: {
-    control: { type: "boolean" },
-  },
-};
-ResponsiveCards.args = {
-  transparent: false,
-};
+export const ControlledLayout = ControlledLayoutTemplate.bind({});
 
-const ResponsiveImagesTemplate = () => (
+const AutoLayoutTemplate = () => (
   <Grid>
-    <GridRow>
-      <GridCell>
-        <img
-          src="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
-          alt="16:9"
-        />
-      </GridCell>
-      <GridCell>
-        <img
-          src="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
-          alt="16:9"
-        />
-      </GridCell>
-    </GridRow>
-    <GridRow>
-      <GridCell>
-        <img
-          src="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
-          alt="16:9"
-        />
-      </GridCell>
-    </GridRow>
+    <div className="grid--row">
+      <div className="grid--col">
+        <Card></Card>
+      </div>
+      <div className="grid--col">
+        <Card></Card>
+      </div>
+      <div className="grid--col">
+        <Card></Card>
+      </div>
+      <div className="grid--col">
+        <Card></Card>
+      </div>
+      <div className="grid--col">
+        <Card></Card>
+      </div>
+      <div className="grid--col">
+        <Card></Card>
+      </div>
+    </div>
   </Grid>
 );
 
-export const ResponsiveImages = ResponsiveImagesTemplate.bind({});
-ResponsiveImages.argTypes = {};
-
-const PlaygroundTemplate = (args) => (
-  <Grid>
-    <GridRow>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
-    </GridRow>
-
-    <GridRow>
-      <GridCell>
-        <Card></Card>
-      </GridCell>
-      <GridCell>
-        <Card></Card>
-      </GridCell>
-    </GridRow>
-
-    <GridRow>
-      <Card></Card>
-    </GridRow>
-  </Grid>
-);
-
-export const Playground = PlaygroundTemplate.bind({});
+export const AutoLayout = AutoLayoutTemplate.bind({});

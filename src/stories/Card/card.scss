@@ -1,91 +1,91 @@
-:root {
-  --card-pad: 1rem;
-  --card-pad-xs: 0.25rem;
-  --card-fs-title: 1.25rem;
-  --card-fs-copy: 0.75rem;
-  --card-fs-description: 0.75rem;
-  --card-fs-currency: 1.5rem;
-}
+@use "../../styles/config/" as *;
 
-/* Block */
+$card-pad: 1rem;
+$card-pad-xs: 0.25rem;
+$card-fs-title: 1.25rem;
+$card-fs-copy: 0.75rem;
+$card-fs-description: 0.75rem;
+$card-fs-currency: 1.5rem;
+
+// Block
 .card {
   display: flex;
   flex-direction: column;
-  background-color: var(--c-bg-white);
-  color: var(--c-text-primary);
-  font-weight: var(--t-fw-regular);
+  background-color: $c-bg-white;
+  color: $c-text-primary;
+  font-weight: $t-fw-regular;
 }
 
-/* Elements */
+// Elements
 img.card__image {
   max-width: 100%;
   height: auto;
 }
 
 .card__content {
-  padding: 0 var(--card-pad);
+  padding: 0 $card-pad;
 }
 
 .card__content .title {
-  font-size: var(--card-fs-title);
-  line-height: var(--t-lh-default);
-  font-weight: var(--t-fw-bold);
-  padding: var(--card-pad) 0;
+  font-size: $card-fs-title;
+  line-height: $t-lh-default;
+  font-weight: $t-fw-bold;
+  padding: $card-pad 0;
 }
 
 .card__content .copy {
-  font-size: var(--card-fs-copy);
-  line-height: var(--t-lh-default);
-  padding-bottom: var(--card-pad);
+  font-size: $card-fs-copy;
+  line-height: $t-lh-default;
+  padding-bottom: $card-pad;
 }
 
 .card__price-description {
-  line-height: var(--t-lh-default);
-  padding: 0 var(--card-pad);
+  line-height: $t-lh-default;
+  padding: 0 $card-pad;
 }
 
 .card__price-description .description {
-  line-height: var(--t-lh-default);
-  font-size: var(--card-fs-description);
-  padding-bottom: var(--card-pad-xs);
+  line-height: $t-lh-default;
+  font-size: $card-fs-description;
+  padding-bottom: $card-pad-xs;
 }
 
 .card__price {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  line-height: var(--t-lh-default);
-  padding: 0 var(--card-pad);
+  line-height: $t-lh-default;
+  padding: 0 $card-pad;
 }
 
 .card__price .price {
-  line-height: var(--t-lh-box);
-  font-size: var(--card-fs-currency);
-  padding-bottom: var(--card-pad);
-  padding-right: var(--card-pad-xs);
-  font-weight: var(--t-fw-bold);
+  line-height: $t-lh-box;
+  font-size: $card-fs-currency;
+  padding-bottom: $card-pad;
+  padding-right: $card-pad-xs;
+  font-weight: $t-fw-bold;
 }
 
 .card__price .currency {
-  line-height: var(--t-lh-box);
-  font-weight: var(--t-fw-bold);
+  line-height: $t-lh-box;
+  font-weight: $t-fw-bold;
 }
 
 .card__actions {
-  padding: 0 var(--card-pad);
+  padding: 0 $card-pad;
   display: flex;
   flex-direction: column;
 }
 
 .card__actions .action-link {
-  color: var(--c-accent-primary);
-  padding-bottom: var(--card-pad);
-  font-weight: var(--t-fw-bold);
+  color: $c-accent-primary;
+  padding-bottom: $card-pad;
+  font-weight: $t-fw-bold;
 }
 
-/* Modifiers */
+// Modifiers
 .card--transparent {
-  background-color: var(--c-bg-transparent);
+  background-color: $c-bg-transparent;
 }
 
 .card--transparent .card__content {

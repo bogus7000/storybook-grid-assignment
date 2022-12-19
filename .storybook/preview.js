@@ -5,35 +5,35 @@ const customViewportOptions = {
     name: "XSM",
     styles: {
       width: "360px",
-      height: "840px",
+      height: "3000px",
     },
   },
   SM: {
     name: "SM",
     styles: {
       width: "600px",
-      height: "1300px",
+      height: "3000px",
     },
   },
   MD: {
     name: "MD",
     styles: {
-      width: "834px",
-      height: "1480px",
+      width: "800px",
+      height: "3000px",
     },
   },
   LG: {
     name: "LG",
     styles: {
       width: "1024px",
-      height: "2200px",
+      height: "3000px",
     },
   },
   XLG: {
     name: "XLG",
     styles: {
       width: "1288px",
-      height: "2500px",
+      height: "3000px",
     },
   },
 };

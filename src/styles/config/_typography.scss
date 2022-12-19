@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "breakpoints" as *;
+@use "theme" as *;
+@use "../mixins" as *;
+
+@mixin set-font-family() {
+  html {
+    font-family: $t-font-family;
+  }
+}
+
+@mixin responsive-typography($breakpoints-config: $breakpoints) {
+  // Initialize
+  html {
+    font-size: 16px;
+  }
+
+  // Apply overrides per breakpoint
+  @each $name in map-keys($breakpoints-config) {
+    $breakpoint-config: map.get($breakpoints, $name);
+    $width: map.get($breakpoint-config, width);
+    $font-size: map.get($breakpoint-config, font-size);
+
+    @include breakpoint-above($width) {
+      html {
+        font-size: $font-size;
+      }
+    }
+  }
+}

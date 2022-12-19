@@ -12,29 +12,33 @@ export const Card = ({
   currency,
   transparent,
   actionText,
-}) => (
-  <div className={`card${transparent ? " card--transparent" : ""}`}>
-    <img className="card__image" src={src} alt={alt} />
+}) => {
+  const classes = `card${transparent ? " card--transparent" : ""}`;
 
-    <div className="card__content">
-      <h3 className="title"> {title}</h3>
-      <p className="copy"> {copy}</p>
-    </div>
+  return (
+    <div className={classes}>
+      <img className="card__image" src={src} alt={alt} />
 
-    <div className="card__price-description">
-      <p className="description">{description}</p>
-    </div>
+      <div className="card__content">
+        <h3 className="title"> {title}</h3>
+        <p className="copy"> {copy}</p>
+      </div>
 
-    <div className="card__price">
-      <p className="price">{price}</p>
-      <p className="currency">{currency}</p>
-    </div>
+      <div className="card__price-description">
+        <p className="description">{description}</p>
+      </div>
 
-    <div className="card__actions">
-      <button className="action-link">{actionText}</button>
+      <div className="card__price">
+        <p className="price">{price}</p>
+        <p className="currency">{currency}</p>
+      </div>
+
+      <div className="card__actions">
+        <button className="action-link">{actionText}</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Card.propTypes = {
   src: PropTypes.string,

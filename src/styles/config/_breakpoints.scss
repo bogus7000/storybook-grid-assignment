@@ -1,0 +1,28 @@
+// Responsive breakpoints:
+// XSM: 360+
+// SM: 600+
+// MD: 800+
+// LG: 1024+
+// XLG: 1288+
+$breakpoints: (
+  xsm: (
+    width: 360px,
+    font-size: 14px,
+  ),
+  sm: (
+    width: 600px,
+    font-size: 14px,
+  ),
+  md: (
+    width: 800px,
+    font-size: 14px,
+  ),
+  lg: (
+    width: 1024px,
+    font-size: 16px,
+  ),
+  xlg: (
+    width: 1288px,
+    font-size: 16px,
+  ),
+);

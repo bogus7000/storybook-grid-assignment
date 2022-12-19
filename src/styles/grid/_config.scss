@@ -1,0 +1,48 @@
+// Responsive breakpoints:
+// XSM: 360+
+// SM: 600+
+// MD: 800+
+// LG: 1024+
+// XLG: 1288+
+$grid-breakpoints: (
+  xsm: (
+    grid-columns: 4,
+    grid-min-column-span: 2,
+    grid-column-width: 70px,
+    grid-gutter: 16px,
+    grid-margin: 16px,
+    grid-container-width: 360px,
+  ),
+  sm: (
+    grid-columns: 6,
+    grid-min-column-span: 2,
+    grid-column-width: 80px,
+    grid-gutter: 16px,
+    grid-margin: 20px,
+    grid-container-width: 600px,
+  ),
+  md: (
+    grid-columns: 6,
+    grid-min-column-span: 2,
+    grid-column-width: 104px,
+    grid-gutter: 24px,
+    grid-margin: 28px,
+    grid-container-width: 800px,
+  ),
+  lg: (
+    grid-columns: 12,
+    grid-min-column-span: 3,
+    grid-column-width: 58px,
+    grid-gutter: 24px,
+    grid-margin: 32px,
+    grid-container-width: 1024px,
+  ),
+  xlg: (
+    grid-columns: 12,
+    grid-min-column-span: 3,
+    grid-column-width: 80px,
+    grid-gutter: 24px,
+    grid-margin: 32px,
+    grid-container-width: 1288px,
+  ),
+);
