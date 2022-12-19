@@ -3,7 +3,9 @@ Grid + Card Assignment
 </h2>
 
 <p align="center">
-[Old README.md file](archive/README-old.md)
+  <a href="https://github.com/bogus7000/storybook-grid-assignment/blob/feedback-update/archive/README-old.md">
+    Old README.md file
+  </a>
 </p>
 
 <p align="center">
