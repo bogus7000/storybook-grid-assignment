@@ -41,7 +41,7 @@
   }
 }
 
-// Override initial container styles for columns
+// Override initial column styles for breakpoint
 @mixin make-cols(
   $grid-breakpoint-name,
   $grid-min-column-span,
@@ -51,18 +51,19 @@
   $grid-half-gutter
 ) {
   .grid-col {
-    // Set default flex to 1 0 ...% for auto layout, based on $grid-min-column-span
+    // Set default flex to 1 0 [...%] for auto layout, based on $grid-min-column-span
     flex: 1 0 math.percentage(math.div($grid-min-column-span, $grid-columns));
     padding: $grid-half-gutter;
 
+    // Generate column glasses
     @for $span from 0 through $grid-columns {
       @if $span == 0 {
-        // Hide on breakpoint with col-breakpoint-0
+        // Hide for breakpoint with col-[breakpoint]-0 class
         &.col-#{$grid-breakpoint-name}-#{$span} {
           display: none;
         }
       } @else if $span >= $grid-min-column-span {
-        // Calculate values for responsive grid class
+        // Prepare values for breakpoint span control class
         &.col-#{$grid-breakpoint-name}-#{$span} {
           $col-width-px: calc(
             ($span * $grid-column-width) + ($span * $grid-gutter)
@@ -89,7 +90,7 @@
 
   // Apply overrides per breakpoint
   @each $grid-breakpoint-name in map-keys($grid-config) {
-    // Collect config values
+    // Prepare config values
     $grid-breakpoint-config: map.get($grid-config, $grid-breakpoint-name);
     $grid-columns: map.get($grid-breakpoint-config, grid-columns);
     $grid-min-column-span: map.get(

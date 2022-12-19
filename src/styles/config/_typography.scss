@@ -9,6 +9,7 @@
   }
 }
 
+// Responsive typography based on config
 @mixin responsive-typography($breakpoints-config: $breakpoints) {
   // Initialize
   html {
