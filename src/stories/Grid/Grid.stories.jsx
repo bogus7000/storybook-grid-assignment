@@ -1,9 +1,11 @@
 import React from "react";
 import { Grid } from "./Grid";
+import { Column } from "./Column/Column";
 import { Card } from "../Card/Card";
+import { Row } from "./Row/Row";
 
 export default {
-  title: "Components/Grid",
+  title: "Components/Grid/Grid",
   component: Grid,
   parameters: {
     layout: "fullscreen",
@@ -15,17 +17,17 @@ export default {
 
 const ControlledLayoutTemplate = () => (
   <Grid>
-    <div className="grid--row">
-      <div className="grid--col col-xsm-4 col-sm-6 col-md-3 col-lg-6 col-xlg-6">
+    <Row>
+      <Column xsm={4} sm={6} md={3} lg={6} xlg={6}>
         <Card></Card>
-      </div>
-      <div className="grid--col col-xsm-4 col-sm-6 col-md-3 col-lg-6 col-xlg-6">
+      </Column>
+      <Column xsm={4} sm={6} md={3} lg={6} xlg={6}>
         <Card></Card>
-      </div>
-      <div className="grid--col col-xsm-4 col-sm-6 col-md-2 col-lg-4 col-xlg-4">
+      </Column>
+      <Column xsm={4} sm={6} md={3} lg={6} xlg={6}>
         <Card></Card>
-      </div>
-    </div>
+      </Column>
+    </Row>
   </Grid>
 );
 
@@ -33,26 +35,26 @@ export const ControlledLayout = ControlledLayoutTemplate.bind({});
 
 const AutoLayoutTemplate = () => (
   <Grid>
-    <div className="grid--row">
-      <div className="grid--col">
+    <Row>
+      <Column>
         <Card></Card>
-      </div>
-      <div className="grid--col">
+      </Column>
+      <Column>
         <Card></Card>
-      </div>
-      <div className="grid--col">
+      </Column>
+      <Column>
         <Card></Card>
-      </div>
-      <div className="grid--col">
+      </Column>
+      <Column>
         <Card></Card>
-      </div>
-      <div className="grid--col">
+      </Column>
+      <Column>
         <Card></Card>
-      </div>
-      <div className="grid--col">
+      </Column>
+      <Column>
         <Card></Card>
-      </div>
-    </div>
+      </Column>
+    </Row>
   </Grid>
 );
 

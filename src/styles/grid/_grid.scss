@@ -6,14 +6,14 @@
 // Initial container
 @mixin init-container {
   // For the tiniest of screens
-  .grid--container {
+  .grid-container {
     width: 100%;
   }
 }
 
 // Initial row
 @mixin init-row {
-  .grid--row {
+  .grid-row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -23,7 +23,7 @@
 // Initial column
 @mixin init-col {
   // For the tiniest of screens
-  .grid--col {
+  .grid-col {
     flex: 0 0 100%;
   }
 }
@@ -34,7 +34,7 @@
   $grid-half-gutter,
   $grid-half-margin
 ) {
-  .grid--container {
+  .grid-container {
     max-width: $grid-container-width;
     margin: auto;
     padding: $grid-half-gutter $grid-half-margin;
@@ -50,7 +50,7 @@
   $grid-gutter,
   $grid-half-gutter
 ) {
-  .grid--col {
+  .grid-col {
     // Set default flex to 1 0 ...% for auto layout, based on $grid-min-column-span
     flex: 1 0 math.percentage(math.div($grid-min-column-span, $grid-columns));
     padding: $grid-half-gutter;

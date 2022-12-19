@@ -41,14 +41,14 @@ export const Card = ({
 };
 
 Card.propTypes = {
-  src: PropTypes.string,
-  alt: PropTypes.string,
-  title: PropTypes.string,
-  copy: PropTypes.string,
-  price: PropTypes.number,
-  currency: PropTypes.string,
-  transparent: PropTypes.bool,
-  actionText: PropTypes.string,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  copy: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  currency: PropTypes.string.isRequired,
+  transparent: PropTypes.bool.isRequired,
+  actionText: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
