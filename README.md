@@ -3,11 +3,11 @@ Grid + Card Assignment
 </h2>
 
 <p align="center">
-Hey there, how are you today? 
+[Old README.md file](archive/README-old.md)
 </p>
 
 <p align="center">
-	<img width="90%" height="auto" src="./images/preview.png">
+	<img width="90%" height="auto" src="images/preview.png">
 </p>
 
 ### Table of Contents
@@ -20,15 +20,16 @@ Hey there, how are you today?
 
 ### Requirements
 
-Please read the [Feedback](#feedback) section for details on how I settled on these. Here's my list:
-
 - Mandatory `Grid` component
-- `Grid` component controls arbitrary elements, is responsive
+- `Grid` component should expose a minimal grid framework that improves upon the earlier implementation with the following features:
+  - Safer `flexbox` properties for better browser support
+  - Automatic layout based on grid parameters and automatic column overflow control (automatic transfer of columns to the next line)
+  - Column width control per breakpoint
+  - Content-independent column width control
 - Optional `Card` component
 - `Storybook` version `(6.5.*)`
-- Vanilla `CSS`. No external `CSS` frameworks like `Bootstrap` and `Tailwind`
+- No external `CSS` frameworks like `Bootstrap` and `Tailwind`
 - Vanilla `React`
-- Make it happen: simple and ASAP
 
 ### How to run this project?
 
@@ -63,54 +64,41 @@ Please read the [Feedback](#feedback) section for details on how I settled on th
 
 ### Implementation notes
 
-- All component respect the following breakpoints. This is reflected in the `Storybook` viewport config as well:
+- Moved away from vanilla `CSS` to `SASS`
 
-  ```
-  XSM: 360+
-  SM: 600+
-  MD: 800+
-  LG: 1024+
-  XLG: 1288+
-  ```
-
-- `Grid`, `GridRow` and `GridCell` components can be used to lay the grid out, for example:
+- `Grid`, `Row` and `Column` components can be used to lay the grid out, for example:
 
   ```
   <Grid>
-  <GridRow>
-  	<GridCell>
-  		<Card />
-  	</GridCell>
-  	<GridCell>
-  		<Card />
-  	</GridCell>
-  	<GridCell hideBelow="sm">
-  		<Card />
-  	</GridCell>
-  	<GridCell hideBelow="lg">
-  		<Card />
-  	</GridCell>
-  </GridRow>
+    <Row>
+      <Column xsm={4} sm={6} md={3} lg={6} xlg={6}>
+        <Card></Card>
+      </Column>
+      <Column xsm={4} sm={6} md={3} lg={6} xlg={6}>
+        <Card></Card>
+      </Column>
+      <Column xsm={4} sm={6} md={3} lg={6} xlg={6}>
+        <Card></Card>
+      </Column>
+    </Row>
   </Grid>
   ```
 
-- Implemented with `flexbox` and `column-gap` property + `media queries`. Simple and ASAP
-- `Grid` is a mandatory component. It encapsulates the grid container styles, adjusts the grid based on the `breakpoint`, and expects `GridRow` components to be passed down as children
-- `GridRow` is a mandatory component. It encapsulates the grid row styles, auto-adjusts to the number of children and expects some components to be passed down as children. It provides the optional `hideBelow` prop. Use it like: `hideBelow="sm"` to hide the whole row below a certain `breakpoint`
-- `GridCell` is an optional component. It provides the optional `hideBelow` prop. Use it like: `hideBelow="sm"` to hide single grid elements below a certain `breakpoint`
-- Among other props, `Card` component provides `transparent` prop to control the background modifier (with and without the background)
-- `Card` component supports responsive typography and spacing (with `CSS variables`)
-- I've applied `reset` + `normalize` technique to make my life a bit easier
-- Props are wired up. You can play around with them in the `Controls` view inside `Storybook`
+- `Grid` is a mandatory component
+- `Row` is a mandatory component
+- `Column` is a mandatory component. Use one or more of its props to specify column span for selected breakpoints. For example: `xsm={4}`. Use `xsm={0}` span to hide
+- Ignore props to use auto layout. Auto layout respects `min-column-span`, as specified in the design doc:
+
+  - `xsm`, `sm` and `md`: 2
+  - `lg` and `xlg`: 3
+
+- Automatic `Column` overflow control is supported
+- `Card` component supports responsive typography and spacing (with `SASS variables`)
 
 ### Feedback
 
-- In the future, please consider including more details about how styles are expected to be managed. `CSS-in-JS`? Pre-processors like `SASS` perhaps? In the end, I decided to use `Vanilla CSS` with `flexbox` and `media queries`, as it seemed like that's what was required for this assignment. Plus I needed to get this done ASAP, and this seemed like a good-enough option that would let me kick this off immediately :)
+- Neither `Normalize.css`, nor `Reset.css` is used to "preset" any styles. When building a custom design system, it is beneficial to start working on a consistent, clean sheet, instead of fighting with user-agent defaults. From my experience, it is easier to achieve what you call the "pixel-perfect implementation" this way. `Normalize.css` is for consistency, `Reset.css` is for getting a clean sheet
 
-- `Grid` component spec may be interpreted in several different ways. At first, I thought that this grid is specifically targeted at images, since you've specified pixel density for some of the grid items `(599x315 @2x)`. Later, as I was inspecting the `Card` component spec, I noticed that the same grid is used to align cards. To be honest, I am still not 100% sure what is expected here. Regardless, my grid supports both cases. There's the `ResponsiveImages` story for images, and the `ResponsiveCards` story for cards
+- `Flexbox column-gap` property has roughly the same support in Safari, as it does in Chrome, Firefox and Edge. `caniuse.com` data points to `92.86%` coverage of global users. I believe this to be sufficient, unless compatibility with browsers older than `2020` is required explicitly. Regardless, in hindsight, I can see how one could expect older browsers to be supported by default, so my initial choice should've been different. Consider including in the requirements for future assignments
 
-- Moreover, I'm not sure about the grid container element, and how the space around the grid should be handled. At `@360+`, should the grid container pin the grid to exactly `360px` width, with white space outside the grid expanding towards the left and right edges of the viewport, as the viewport width increases (sort of like the popular `margin: auto` technique)? In the end, I decided that the grid will stretch out to fill the width of the viewport, as I believe this to be more desired UX-wise. Sorry if I got it wrong here :)
-
-- The `Card` component spec IMO is too general to demand pixel-perfect implementation :). Please consider sharing Figma design files, or similar, for future assignments :)
-
-- Humongous THANKS for your time, I've enjoyed this one a lot! Cheers!
+- Layout control capabilities were not obvious to me from the requirements I have received. Consider including in the requirements for future assignments
